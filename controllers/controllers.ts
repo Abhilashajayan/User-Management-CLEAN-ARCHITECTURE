@@ -15,9 +15,9 @@ export class userController {
         try {
             const userData: UserEntity = req.body;
             await this.userUsecase.addUser(userData);
-            res.status(200).send('Employee added successfully');
+            res.status(200).send('user added successfully');
         } catch (error) {
-            res.status(500).send('Error while adding employee');
+            res.status(500).send('Error while adding  user');
             console.log('Error while adding => ', error);
         }
     }

@@ -14,6 +14,6 @@ export class userRepository implements userUsecasesI {
     async addUser(user: UserEntity): Promise<void> {
         const newUser = new this.User(user);
         await newUser.save();
-        console.log('employee added successfully');
+        console.log('user added successfully');
     }
 }
