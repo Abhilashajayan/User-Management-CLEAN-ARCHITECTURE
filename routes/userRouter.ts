@@ -16,6 +16,14 @@ export class UserRouter {
         this.router.post('/api/create', (req: Request, res: Response) => {
             userControllers.add_user(req, res);
         });
+
+        this.router.get('/api/getuser', (req: Request, res: Response) => {
+            userControllers.get_user(req, res);
+        });
+
+        this.router.delete('/api/delete', (req: Request, res: Response) => {
+            userControllers.deleteUSer(req, res);
+        });
     }
 
     

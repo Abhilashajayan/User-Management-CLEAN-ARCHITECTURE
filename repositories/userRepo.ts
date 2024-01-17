@@ -16,4 +16,12 @@ export class userRepository implements userUsecasesI {
         await newUser.save();
         console.log('user added successfully');
     }
+
+    async getUser(email: string): Promise<UserEntity | null> {
+        return await this.User.findOne({email : email});
+    }
+
+    async  deleteUser(email: string): Promise<void> {
+         await this.User.deleteOne({email : email});
+    }
 }
