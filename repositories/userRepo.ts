@@ -5,6 +5,7 @@ import { Document, Model } from "mongoose";
 
 
 export class userRepository implements userUsecasesI {
+
     private readonly User : Model<userSchemaI>;
     constructor(userModel: Model<userSchemaI>) {
         this.User = userModel;
@@ -23,5 +24,9 @@ export class userRepository implements userUsecasesI {
 
     async  deleteUser(email: string): Promise<void> {
          await this.User.deleteOne({email : email});
+    }
+
+     async editUser(email: string, userData:Partial< UserEntity>): Promise<UserEntity | null> {
+      return  await this.User.findOneAndUpdate({email},userData,{new : true});
     }
 }

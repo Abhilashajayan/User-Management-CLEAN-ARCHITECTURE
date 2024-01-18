@@ -24,6 +24,10 @@ export class UserRouter {
         this.router.delete('/api/delete', (req: Request, res: Response) => {
             userControllers.deleteUSer(req, res);
         });
+
+        this.router.post('/api/editUser', (req: Request, res: Response) => {
+            userControllers.editUser(req, res);
+        });
     }
 
     

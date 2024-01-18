@@ -16,4 +16,9 @@ export class userUsecases implements userUsecasesI{
   async deleteUser(email: string): Promise<void> {
      return await this.userRepository.deleteUser(email);
  }
+
+  async editUser(email: string, userData : UserEntity): Promise<UserEntity> {
+     return await this.userRepository.editUser(email, userData);
+ }
+
 }

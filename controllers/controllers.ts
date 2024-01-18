@@ -9,8 +9,7 @@ export class userController {
     constructor(userUsecase : userUsecases){
         this.userUsecase = userUsecase;
     }
-
-
+    
     async add_user(req: Request, res: Response) {
         try {
             const userData: UserEntity = req.body;
@@ -21,6 +20,7 @@ export class userController {
             console.log('Error while adding => ', error);
         }
     }
+
     async get_user(req: Request, res: Response) {
         try {
             const { email } = req.body;
@@ -31,6 +31,7 @@ export class userController {
             console.log('Error while adding => ', error);
         }
     }
+
     async deleteUSer(req: Request, res: Response){
         try{
             const { email } = req.body;
@@ -43,4 +44,20 @@ export class userController {
 
 
 }
+
+    async editUser( req: Request, res: Response) {
+        try{
+            const { name , email ,id } = req.body;
+            const userData = {
+                id,
+                name,
+                email
+            }
+            const user = await this.userUsecase.editUser(email ,userData);
+            res.status(200).json("changed the user data");
+
+        }catch(err){
+            res.status(500).json({err});
+        }
+    }
 }
